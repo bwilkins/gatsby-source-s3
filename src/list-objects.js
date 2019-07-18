@@ -14,7 +14,7 @@ const getObjects = (s3, bucket, continuationToken = null) => {
 };
 
 const getAllObjects = (s3, bucket) => {
-  let allContent = {};
+  let allContent = [];
 
   const fetchMore = content => {
     Array.prototype.push.apply(allContent, content.Contents);
