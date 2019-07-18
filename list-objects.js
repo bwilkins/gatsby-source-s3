@@ -49,7 +49,7 @@ const getAllObjects = (s3, bucket) => {
 
   const fetchMore = content => {
     Array.prototype.push.apply(allContent, content.Contents);
-    if (content.isTruncated) {
+    if (content.IsTruncated) {
       return getObjects(s3, bucket, content.NextContinuationToken).then(
         fetchMore
       );
