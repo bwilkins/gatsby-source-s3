@@ -39,12 +39,13 @@ export const listObjects = (bucket, config = {}) => {
 
   return Promise.all(
     buckets.map(bucket => {
+      const bucketName = typeof bucket === 'string' ? bucket : bucket.Bucket;
       return getAllObjects(s3, bucket).then(content => {
         if (bucket.Filter) {
           content = (content || []).filter(bucket.Filter);
         }
 
-        return content;
+        return { Contents: content, Name: bucketName };
       });
     })
   );
